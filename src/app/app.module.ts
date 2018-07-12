@@ -10,13 +10,17 @@ import { ROUTES } from './routes/routes';
 import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthedGuard } from './guards/authed.guard';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, AuthedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

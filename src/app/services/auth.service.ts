@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { CONFIG } from './../config/config';
+import { CONFIG } from '../config/config';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { UserData } from './../classes/UserData';
+import { UserData } from '../classes/UserData';
 import { User } from '../classes/User';
 
 @Injectable({
@@ -18,11 +18,23 @@ export class AuthService {
               .then((response) => {
                 //  recover token and user settings from the server
                 let token = response.json().token;
-                let user = response.json().user;
+                let user = response.json().user; // user.data : problem with api
 
                 let userData = new UserData(token, user);
                 return userData;
               })
+  }
+
+  login(email: string, password: string): Promise<UserData> {
+    return this.http.post(`${CONFIG.API_URL}/authenticate`, {email: email, password: password})
+      .toPromise()
+      .then((response) => {
+        let token = response.json().token;
+        let user = response.json().user; // user.data : problem with api
+        
+        let userData = new UserData(token, user);
+        return userData;
+      })
   }
 
   logUserIn(userData): void {
@@ -34,7 +46,23 @@ export class AuthService {
     this.router.navigate(['/dashboard']); 
   }
 
+  isLoggedIn(): boolean{
+    let token = localStorage.getItem('token');
+    let user = localStorage.getItem('user');
+
+    if(user && token) return true 
+    return false
+  }
   
+  logOut(): void {
+
+    // delete token and user settings from browser
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    //  navigate the user to login page after logout
+    this.router.navigate(['/auth/login']); 
+  }
 }
 
 

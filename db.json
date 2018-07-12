@@ -29,7 +29,34 @@
       "email": "oumaima@gmail.com",
       "password": "lol123",
       "id": 5
+    },
+    {
+      "name": "amine",
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "id": 6
     }
   ],
-  "jokes": []
+  "authenticate": [
+    {
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "id": 1
+    },
+    {
+      "email": "amine@gmail.com",
+      "password": "lol",
+      "id": 2
+    },
+    {
+      "email": "amine@gmail.com",
+      "password": "lol1234",
+      "id": 3
+    },
+    {
+      "email": "amine@gmail.com",
+      "password": "lol123456",
+      "id": 4
+    }
+  ]
 }
