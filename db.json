@@ -1,0 +1,35 @@
+{
+  "register": [
+    {
+      "name": "amine",
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "id": 1
+    },
+    {
+      "name": "aziz",
+      "email": "aziz@gmail.com",
+      "password": "lol123",
+      "id": 2
+    },
+    {
+      "name": "yusuf",
+      "email": "yusuf@gmail.com",
+      "password": "lol123",
+      "id": 3
+    },
+    {
+      "name": "jwayda",
+      "email": "jwayda@gmail.com",
+      "password": "lol123",
+      "id": 4
+    },
+    {
+      "name": "oumaima",
+      "email": "oumaima@gmail.com",
+      "password": "lol123",
+      "id": 5
+    }
+  ],
+  "jokes": []
+}
