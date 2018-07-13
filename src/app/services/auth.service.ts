@@ -3,14 +3,14 @@ import { CONFIG } from '../config/config';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { UserData } from '../classes/UserData';
-import { User } from '../classes/User';
+import { NotifyService } from './notify.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router, private notifyService: NotifyService) { }
 
   register(name: string, email: string, password: string): Promise<UserData> {
     return this.http.post(`${CONFIG.API_URL}/register`, { name: name, email: email, password: password })
@@ -42,6 +42,9 @@ export class AuthService {
     localStorage.setItem('token', userData.token);
     localStorage.setItem('user', JSON.stringify(userData.user));
 
+    //notification
+    this.notifyService.notify('successfully logged in', 'success');
+
     //  navigate the user to dashboard after registration
     this.router.navigate(['/dashboard']); 
   }
@@ -59,6 +62,9 @@ export class AuthService {
     // delete token and user settings from browser
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+
+    //notification
+    this.notifyService.notify('successfully logged out', 'success');
 
     //  navigate the user to login page after logout
     this.router.navigate(['/auth/login']); 

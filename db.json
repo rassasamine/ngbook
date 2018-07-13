@@ -57,6 +57,21 @@
       "email": "amine@gmail.com",
       "password": "lol123456",
       "id": 4
+    },
+    {
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "id": 5
+    },
+    {
+      "email": "ala@gmail.com",
+      "password": "lol123",
+      "id": 6
+    },
+    {
+      "email": "karim@gmail.com",
+      "password": "lol123123",
+      "id": 7
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { NotifyService } from './services/notify.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthedGuard } from './guards/authed.guard';
+import { NotifyComponent } from './notify/notify.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { AuthedGuard } from './guards/authed.guard';
     AppComponent,
     RegisterComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    NotifyComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { AuthedGuard } from './guards/authed.guard';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard],
+  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
