@@ -35,6 +35,12 @@
       "email": "amine@gmail.com",
       "password": "lol123",
       "id": 6
+    },
+    {
+      "name": "sadok",
+      "email": "sadok@gmail.com",
+      "password": "lol123",
+      "id": 7
     }
   ],
   "authenticate": [
@@ -72,6 +78,46 @@
       "email": "karim@gmail.com",
       "password": "lol123123",
       "id": 7
+    },
+    {
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "id": 8
+    }
+  ],
+  "user": [
+    {
+      "name": "Amine",
+      "email": "amine@gmail.com",
+      "password": "lol123",
+      "joined": "Apr 01, 2018",
+      "avatar": "https://avatars2.githubusercontent.com/u/25062510?s=400&v=4",
+      "id": 1
+    },
+    {
+      "name": "Sadok",
+      "email": "sadok@gmail.com",
+      "password": "lol123",
+      "joined": "Apr 02, 2018",
+      "avatar": "https://pbs.twimg.com/profile_images/732321824609079296/wwCO1p9i_400x400.jpg",
+      "id": 2
+    },
+    {
+      "name": "Baha",
+      "email": "Baha@gmail.com",
+      "password": "lol123",
+      "joined": "Apr 03, 2018",
+      "avatar": "https://avatars2.githubusercontent.com/u/25364886?s=400&v=4",
+      "id": 3
+    },
+    {
+      "name": "Mahdi",
+      "email": "Mahdi@gmail.com",
+      "password": "lol123",
+      "joined": "Apr 04, 2018",
+      "avatar": "https://yt3.ggpht.com/-JyDhsoqKplI/AAAAAAAAAAI/AAAAAAAAAAA/_k67DTX6Z58/s288-mo-c-c0xffffffff-rj-k-no/photo.jpg",
+      "id": 4
     }
   ]
+  
 }

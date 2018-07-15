@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotifyService } from './../services/notify.service';
-import { Message } from './../classes/Message';
+import { NotifyService } from '../services/notify.service';
+import { Message } from '../classes/Message';
 
 @Component({
   selector: 'app-notify',

@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { UserData } from '../classes/UserData';
 import { NotifyService } from './notify.service';
+import { User } from '../classes/User';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
               .then((response) => {
                 //  recover token and user settings from the server
                 let token = response.json().token;
-                let user = response.json().user; // user.data : problem with api
+                let user = response.json().user; // user.data : problem with api : not same format
 
                 let userData = new UserData(token, user);
                 return userData;
@@ -69,6 +70,27 @@ export class AuthService {
     //  navigate the user to login page after logout
     this.router.navigate(['/auth/login']); 
   }
+
+  getAuthUser(): User {
+
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
+  getAuthUserId(): number {
+
+
+    //  return JSON.parse(localStorage.getItem('user')).id;
+    
+    // static return as current userId only for test !!!  
+    return 1;
+
+  }
+
+  getToken(): String{
+
+    return localStorage.getItem('token');
+  }
+
 }
 
 

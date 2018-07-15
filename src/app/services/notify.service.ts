@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Message } from './../classes/Message';
+import { Message } from '../classes/Message';
 
 @Injectable({
   providedIn: 'root'

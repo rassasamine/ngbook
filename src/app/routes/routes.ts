@@ -1,3 +1,4 @@
+import { ProfileComponent } from '../profile/profile.component';
 import { RegisterComponent } from '../register/register.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LoginComponent } from '../login/login.component';
@@ -8,6 +9,8 @@ export const ROUTES = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'auth/register', component: RegisterComponent ,canActivate: [AuthedGuard]},
     { path: 'auth/login', component: LoginComponent, canActivate: [AuthedGuard]},
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    { path: 'user/profile/:id', component: ProfileComponent, canActivate: [AuthGuard]}
+
 ];
 

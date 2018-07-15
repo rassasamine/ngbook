@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { NotifyService } from './services/notify.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthedGuard } from './guards/authed.guard';
 import { NotifyComponent } from './notify/notify.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PrettyDatePipe } from './pipes/pretty-date.pipe';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { NotifyComponent } from './notify/notify.component';
     RegisterComponent,
     DashboardComponent,
     LoginComponent,
-    NotifyComponent
+    NotifyComponent,
+    ProfileComponent,
+    PrettyDatePipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { NotifyComponent } from './notify/notify.component';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService],
+  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
