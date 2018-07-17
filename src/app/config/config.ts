@@ -1,3 +1,4 @@
 export const CONFIG = {
-    API_URL: "http://localhost:3050"
+    //  API DOCUMENTATION : https://ng-book-api.bahdcasts.com/docs
+    API_URL: "https://ng-book-api.bahdcasts.com/api"
 }

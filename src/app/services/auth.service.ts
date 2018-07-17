@@ -23,8 +23,7 @@ export class AuthService {
               .then((response) => {
                 //  recover token and user settings from the server
                 let token = response.json().token;
-                let user = response.json().user; // user.data : problem with api : not same format
-
+                let user = response.json().user.data;
                 let userData = new UserData(token, user);
 
                 this.bar.complete();
@@ -40,7 +39,7 @@ export class AuthService {
       .toPromise()
       .then((response) => {
         let token = response.json().token;
-        let user = response.json().user; // user.data : problem with api
+        let user = response.json().user.data;
         
         let userData = new UserData(token, user);
 
@@ -72,6 +71,7 @@ export class AuthService {
   logOut(): void {
     // adding progress bar
     this.bar.start();
+
     // delete token and user settings from browser
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -86,18 +86,12 @@ export class AuthService {
   }
 
   getAuthUser(): User {
-
     return JSON.parse(localStorage.getItem('user'));
   }
 
   getAuthUserId(): number {
 
-
-    //  return JSON.parse(localStorage.getItem('user')).id;
-    
-    // static return as current userId only for test !!!  
-    return 1;
-
+    return JSON.parse(localStorage.getItem('user')).id;    
   }
 
   getToken(): String{

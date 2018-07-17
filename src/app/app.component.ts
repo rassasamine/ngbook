@@ -1,3 +1,4 @@
+import { User } from './classes/User';
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
@@ -7,15 +8,21 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'app';
+  user: User;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService){
 
-  isLoggedIn(): boolean{
+    this.user = this.authService.getAuthUser();
+
+  }
+
+  isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
   }
 
-  logout(){
+  logout(): void {
     this.authService.logOut();
   }
 }
