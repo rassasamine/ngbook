@@ -19,6 +19,8 @@ import { NotifyComponent } from './notify/notify.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PrettyDatePipe } from './pipes/pretty-date.pipe';
 import { NgProgressModule } from '@ngx-progressbar/core';
+import { WallComponent } from './profile/wall/wall.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NgProgressModule } from '@ngx-progressbar/core';
     LoginComponent,
     NotifyComponent,
     ProfileComponent,
-    PrettyDatePipe
+    PrettyDatePipe,
+    WallComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
