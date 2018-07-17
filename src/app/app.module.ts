@@ -18,7 +18,7 @@ import { AuthedGuard } from './guards/authed.guard';
 import { NotifyComponent } from './notify/notify.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PrettyDatePipe } from './pipes/pretty-date.pipe';
-
+import { NgProgressModule } from '@ngx-progressbar/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { PrettyDatePipe } from './pipes/pretty-date.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgProgressModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService],
   bootstrap: [AppComponent]

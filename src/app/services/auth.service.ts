@@ -5,15 +5,19 @@ import { Router } from '@angular/router';
 import { UserData } from '../classes/UserData';
 import { NotifyService } from './notify.service';
 import { User } from '../classes/User';
+import { NgProgress } from '@ngx-progressbar/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: Http, private router: Router, private notifyService: NotifyService) { }
+  constructor(private http: Http, private router: Router, private notifyService: NotifyService, private bar: NgProgress) { }
 
   register(name: string, email: string, password: string): Promise<UserData> {
+    // adding progress bar
+    this.bar.start();
+    
     return this.http.post(`${CONFIG.API_URL}/register`, { name: name, email: email, password: password })
               .toPromise()
               .then((response) => {
@@ -22,11 +26,16 @@ export class AuthService {
                 let user = response.json().user; // user.data : problem with api : not same format
 
                 let userData = new UserData(token, user);
+
+                this.bar.complete();
                 return userData;
               })
   }
 
   login(email: string, password: string): Promise<UserData> {
+    // adding progress bar
+    this.bar.start();
+
     return this.http.post(`${CONFIG.API_URL}/authenticate`, {email: email, password: password})
       .toPromise()
       .then((response) => {
@@ -34,6 +43,8 @@ export class AuthService {
         let user = response.json().user; // user.data : problem with api
         
         let userData = new UserData(token, user);
+
+        this.bar.complete();
         return userData;
       })
   }
@@ -59,10 +70,13 @@ export class AuthService {
   }
   
   logOut(): void {
-
+    // adding progress bar
+    this.bar.start();
     // delete token and user settings from browser
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+
+    this.bar.complete();
 
     //notification
     this.notifyService.notify('successfully logged out', 'success');
