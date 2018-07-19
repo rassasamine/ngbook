@@ -13,7 +13,11 @@ export class ProfileComponent implements OnInit {
   id: number;
   user: User;
 
-  constructor(private router: ActivatedRoute, private userService: UserService, private authService: AuthService) { }
+  constructor(private router: ActivatedRoute, private userService: UserService, private authService: AuthService) { 
+    this.userService.userProfileUpdated.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnInit() {
     this.router.params.subscribe((params) => {

@@ -8,13 +8,13 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li><a>All jokes</a></li>
+        <li><a [routerLink]="['/dashboard']">All jokes</a></li>
+        <li *ngIf="isLoggedIn() && user"><a [routerLink]="['/user/profile', user.id ]" role="button">My profile</a> </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/auth/login']">Login</a> </li>
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/auth/register']">Register</a> </li>
-        <li *ngIf="isLoggedIn() && user"><a [routerLink]="['/user/profile', user.id ]" role="button">My profile</a> </li>
         <li *ngIf="isLoggedIn()"><a class="dropdown-toggle"  (click)="logout()" role="button">Logout</a> </li>
       </ul>
     </div>

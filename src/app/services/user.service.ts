@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthService } from './auth.service';
 import { CONFIG } from '../config/config';
@@ -9,10 +9,12 @@ import { User } from '../classes/User';
 })
 export class UserService {
 
+  userProfileUpdated: EventEmitter<User>;
   private headers: Headers;
 
   constructor(private authService: AuthService, private http: Http) {
-    this.headers = new Headers({'Authorization': `Bearer ${this.authService.getToken()}`})
+    this.headers = new Headers({'Authorization': `Bearer ${this.authService.getToken()}`});
+    this.userProfileUpdated = new EventEmitter();
   }
 
    getUserById(id: number): Promise<User> {
@@ -29,4 +31,22 @@ export class UserService {
               .toPromise()
               .then((response) => response.json())
    }
+
+   updateProfile(name: string, email: string): Promise<User> {
+     let url = `${CONFIG.API_URL}/user/update`;
+     let body = {name: name, email: email};
+     let options = new RequestOptions({headers: this.headers});
+
+     return this.http.put(url, body, options)   
+            .toPromise()
+            .then((response) => {
+              let user = response.json().data;
+              localStorage.setItem('user', JSON.stringify(user));
+              
+              //  synchronous update : every time data changes, the profile UI changes 
+              this.userProfileUpdated.emit(user);
+
+              return user;
+            })
+    }
 }
