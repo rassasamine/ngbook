@@ -95,7 +95,7 @@ export class AuthService {
   }
 
   getToken(): String{
-
+    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
 

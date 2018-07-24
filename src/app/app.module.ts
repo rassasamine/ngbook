@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './routes/routes';
 import { AuthService } from './services/auth.service';
@@ -23,6 +23,9 @@ import { WallComponent } from './profile/wall/wall.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { FollowComponent } from './profile/follow/follow.component';
 import { FollowService } from './services/follow.service';
+import { CreateJokeComponent } from './create-joke/create-joke.component';
+import { JokeService } from './services/joke.service';
+
 
 @NgModule({
   declarations: [
@@ -35,16 +38,18 @@ import { FollowService } from './services/follow.service';
     PrettyDatePipe,
     WallComponent,
     EditProfileComponent,
-    FollowComponent
+    FollowComponent,
+    CreateJokeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
     NgProgressModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService, FollowService],
+  providers: [AuthService, AuthGuard, AuthedGuard, NotifyService, UserService, FollowService, JokeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Create joke
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="jokeForm" (ngSubmit)="onSubmit()">
+          <ul class="list-group">
+            <li class="list-group-item text-danger" *ngIf="jokeForm.get('title').touched && jokeForm.get('title').hasError('required')">
+              the Title is required
+            </li>
+            <li class="list-group-item text-danger" *ngIf="jokeForm.get('content').touched &&jokeForm.get('content').hasError('required')">
+              the Content is required
+            </li>
+            <li class="list-group-item text-danger" *ngIf="jokeForm.get('content').touched &&jokeForm.get('content').hasError('minlength')">
+              the Content must be greater than 5 characters
+            </li>
+          </ul>
+          <div class="form-group">
+            <label>Joke title</label>
+            <input type="text" class="form-control" formControlName="title">
+          </div>
+          <div class="form-group">
+            <label>Joke content</label>
+            <textarea cols="5" rows="5" class="form-control" formControlName="content"></textarea>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-info" [disabled]="jokeForm.invalid">
+              Create Joke
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
