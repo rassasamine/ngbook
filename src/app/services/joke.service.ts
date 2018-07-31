@@ -25,8 +25,25 @@ export class JokeService {
     return this.http.post(url, body, options)
             .toPromise()
             .then(resp => {
-              this.bar.complete() 
-              return resp.json() 
+              this.bar.complete();
+              return resp.json();
+            })
+  }
+
+  getAllJokes(endPoint?) {
+    this.bar.start();
+    
+    let url;
+    if(endPoint) url = endPoint;
+    else url = `${CONFIG.API_URL}/jokes`
+    
+    let options = new RequestOptions({headers: this.headers});
+  
+    return this.http.get(url, options)
+            .toPromise()
+            .then(resp => {
+              this.bar.complete(); 
+              return resp.json();
             })
   }
 }

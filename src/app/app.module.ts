@@ -25,6 +25,7 @@ import { FollowComponent } from './profile/follow/follow.component';
 import { FollowService } from './services/follow.service';
 import { CreateJokeComponent } from './create-joke/create-joke.component';
 import { JokeService } from './services/joke.service';
+import { JokeComponent } from './joke/joke.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { JokeService } from './services/joke.service';
     WallComponent,
     EditProfileComponent,
     FollowComponent,
-    CreateJokeComponent
+    CreateJokeComponent,
+    JokeComponent
   ],
   imports: [
     BrowserModule,
