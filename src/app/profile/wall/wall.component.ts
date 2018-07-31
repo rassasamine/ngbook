@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-wall',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WallComponent implements OnInit {
 
-  constructor() { }
+  public jokes: any;
+  public id: number;
+
+  constructor( private userService: UserService, private route: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params =>{
+      this.id = +params['id'];
+      this.getUserWall();
+    }) 
   }
 
+  getUserWall() {
+    this.userService.getUserWall(this.id)
+                  .then(resp => {
+                    this.jokes = resp.data;
+                  })
+  }
 }

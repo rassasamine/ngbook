@@ -28,8 +28,5 @@ export class JokeService {
               this.bar.complete() 
               return resp.json() 
             })
-            .catch(err =>{
-              console.log(err)
-            })
   }
 }
