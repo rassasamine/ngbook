@@ -28,4 +28,15 @@ export class WallComponent implements OnInit {
                     this.jokes = resp.data;
                   })
   }
+
+  jokeDeleted(jokeId) {
+    let joke = this.jokes.find((element) =>{
+      return jokeId === element.id;
+    })
+    
+    let jokeIndex = this.jokes.indexOf(joke);
+
+    //  delete the joke from the array of jokes 
+    this.jokes.splice(jokeIndex, 1);
+  }
 }

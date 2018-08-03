@@ -31,7 +31,7 @@ export class AuthService {
               })
   }
 
-  login(email: string, password: string): Promise<UserData> {
+  login(email: string, password: string): Promise<any> {
     // adding progress bar
     this.bar.start();
 

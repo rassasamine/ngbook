@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
     this.jokeService.getAllJokes(endPoint)
         .then(resp => {
           this.data = resp;
-          console.log(resp);
         })
   }
 }

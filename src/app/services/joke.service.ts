@@ -46,4 +46,30 @@ export class JokeService {
               return resp.json();
             })
   }
+
+  updateJoke(joke,id: number) : Promise<any>{
+    let url = `${CONFIG.API_URL}/jokes/${id}`
+    this.bar.start()
+    let body = { title: joke.title, joke: joke.content }
+    let options = new RequestOptions({headers: this.headers});
+  
+    return this.http.put(url, body, options)
+            .toPromise()
+            .then(resp => {
+              this.bar.complete();
+              return resp.json();
+            })
+  }
+
+  deleteJoke(id: number) : Promise<any>{
+    let url = `${CONFIG.API_URL}/jokes/${id}`
+    this.bar.start()
+    let options = new RequestOptions({headers: this.headers});
+  
+    return this.http.delete(url, options)
+            .toPromise()
+            .then(resp => {
+              this.bar.complete();
+            })
+  }
 }
