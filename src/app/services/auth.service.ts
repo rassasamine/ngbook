@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private http: Http, private router: Router, private notifyService: NotifyService, private bar: NgProgress) { }
 
-  register(name: string, email: string, password: string): Promise<UserData> {
+  register(name: string, email: string, password: string): Promise<any> {
     // adding progress bar
     this.bar.start();
     
@@ -28,6 +28,10 @@ export class AuthService {
 
                 this.bar.complete();
                 return userData;
+              })
+              .catch(error =>{
+                this.bar.complete();
+                return Promise.reject(error.json());
               })
   }
 
@@ -45,6 +49,10 @@ export class AuthService {
 
         this.bar.complete();
         return userData;
+      })
+      .catch(error =>{
+        this.bar.complete();
+        return Promise.reject(error.json());
       })
   }
 
